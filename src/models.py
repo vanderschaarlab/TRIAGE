@@ -1,9 +1,8 @@
-import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-
 # Define various neural network architectures
+
 
 class Net1(nn.Module):
     def __init__(self, input_size=12, num_units=64, nonlin=F.relu, nlabels=1):
@@ -25,7 +24,6 @@ class Net1(nn.Module):
         return X
 
 
-    
 class Net2(nn.Module):
     def __init__(self, input_size=12, num_units=64, nonlin=F.relu, nlabels=1):
         super(Net2, self).__init__()
@@ -42,6 +40,7 @@ class Net2(nn.Module):
         X = F.relu(self.dense2(X))
         X = self.output(X)
         return X
+
 
 class Net3(nn.Module):
     def __init__(self, input_size=12, num_units=64, nonlin=F.relu, nlabels=1):
@@ -60,6 +59,7 @@ class Net3(nn.Module):
         X = self.output(X)
         return X
 
+
 class Net4(nn.Module):
     def __init__(self, input_size=12, num_units=64, nonlin=F.relu, nlabels=1):
         super(Net4, self).__init__()
@@ -74,7 +74,8 @@ class Net4(nn.Module):
         X = F.relu(self.dense1(X))
         X = self.output(X)
         return X
-    
+
+
 class Net5(nn.Module):
     def __init__(self, input_size=12, num_units=64, nonlin=F.relu, nlabels=1):
         super(Net5, self).__init__()
@@ -91,17 +92,18 @@ class Net5(nn.Module):
         X = self.nonlin(self.dense0(X))
         residual = X
         X = self.dense1(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         residual = X
         X = self.dense2(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         X = F.relu(self.dense3(X))
         X = F.relu(self.dense4(X))
         X = self.output(X)
         return X
-    
+
+
 class Net6(nn.Module):
     def __init__(self, input_size=12, num_units=128, nonlin=F.relu, nlabels=1):
         super(Net6, self).__init__()
@@ -118,16 +120,17 @@ class Net6(nn.Module):
         X = self.nonlin(self.dense0(X))
         residual = X
         X = self.dense1(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         residual = X
         X = self.dense2(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         X = F.relu(self.dense3(X))
         X = F.relu(self.dense4(X))
         X = self.output(X)
         return X
+
 
 class Net7(nn.Module):
     def __init__(self, input_size=12, num_units=16, nonlin=F.relu, nlabels=1):
@@ -145,14 +148,13 @@ class Net7(nn.Module):
         X = self.nonlin(self.dense0(X))
         residual = X
         X = self.dense1(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         residual = X
         X = self.dense2(X)
-        X = X +residual
+        X = X + residual
         X = F.relu(X)
         X = F.relu(self.dense3(X))
         X = F.relu(self.dense4(X))
         X = self.output(X)
         return X
-
