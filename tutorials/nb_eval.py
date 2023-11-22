@@ -3,8 +3,8 @@ from pathlib import Path
 
 # third party
 import click
-from nbconvert.preprocessors import ExecutePreprocessor
 import nbformat
+from nbconvert.preprocessors import ExecutePreprocessor
 
 
 def run_notebook(notebook_path: Path, notebook_dir: Path) -> None:
