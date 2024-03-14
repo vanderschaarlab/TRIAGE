@@ -1,54 +1,58 @@
-import random
 import os
-import torch
+import random
+
 import numpy as np
+import torch
+
 
 def confidence_interval(data, confidence: float = 0.95):
     """
     The `confidence_interval` function calculates the confidence interval for a given dataset.
-    
+
     Args:
       data: The data parameter is the input data for which you want to calculate the confidence
     interval. It should be a numpy array or any iterable that can be converted to a numpy array.
       confidence (float): The `confidence` parameter is a float that represents the desired level of
     confidence for the confidence interval. It should be a value between 0 and 1, where 0.95 corresponds
     to a 95% confidence level.
-    
+
     Returns:
       The function `confidence_interval` returns the confidence interval for the given data. It returns
     a tuple containing the mean and the confidence interval.
     """
-    import scipy.stats
     import numpy as np
+    import scipy.stats
 
     a: np.ndarray = 1.0 * np.array(data)
     n: int = len(a)
     if n == 1:
         import logging
-        logging.warning('The first dimension of your data is 1, perhaps you meant to transpose your data? or remove the'
-                        'singleton dimension?')
-    m, se = a.mean(), scipy.stats.sem(a)
-    tp = scipy.stats.t.ppf((1 + confidence) / 2., n - 1)
+
+        logging.warning(
+            "The first dimension of your data is 1, perhaps you meant to transpose your data? or remove the"
+            "singleton dimension?",
+        )
+    se = scipy.stats.sem(a)
+    tp = scipy.stats.t.ppf((1 + confidence) / 2.0, n - 1)
     h = se * tp
-    return  h
+    return h
+
 
 def seed_everything(seed=42):
     """
     Seeds everything
-    
+
     Args:
       seed: seed parameterl. Defaults to 42
     """
     random.seed(seed)
-    os.environ['PYTHONHASHSEED'] = str(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
-
-
 
 
 class EarlyStopping:
