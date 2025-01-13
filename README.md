@@ -10,7 +10,7 @@ TRIAGE can be used to characterize data using ***any*** machine learning regress
 
 The utility of TRIAGE extends to a variety of use-cases.
 
-For more details, please read our [NeurIPS 2023 paper](https://arxiv.org/): *TRIAGE: Characterizing and auditing training data for improved regression*.
+For more details, please read our [NeurIPS 2023 paper](https://arxiv.org/pdf/2310.18970): *TRIAGE: Characterizing and auditing training data for improved regression*.
 
 ---
 
